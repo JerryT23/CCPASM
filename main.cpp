@@ -4,6 +4,7 @@
 #include <thread> //for pause function
 #include <iomanip> //for list of bets
 #include <vector> // For storing bridges
+#include <limits>
 
 using namespace std;
 using namespace std::chrono;
@@ -2381,15 +2382,17 @@ bool apply_bridge(int &position, const vector<Bridge> &bridges) {
 int main()
 {
     srand(time(0)); // Seed for random number generation
+    int xwing_position = 0;
     int xwing_SpeedMin = 2;
     int xwing_SpeedMax = 4;
+    int tiefighter_position = 0;
     int tiefighter_SpeedMin = 1;
     int tiefighter_SpeedMax = 5;
+    int soullessone_position = 0;
     int soullessone_SpeedMin = 3;
     int soullessone_SpeedMax = 6;
-    int xwing_position = 0;
-    int tiefighter_position = 0;
-    int soullessone_position = 0;
+    const int PAUSE_DURATION_MS = 1000; // Pause duration in milliseconds (1 second)
+    int xw = 0, tw = 0, sw = 0;
     int race_rounds = 0;
     int turn_of_race = 1;
     int tracksec;
@@ -2397,8 +2400,6 @@ int main()
     float bet = 0;
     int option = 0; 
     string racer1, racer2;
-    int xw = 0, tw = 0, sw = 0;
-    const int PAUSE_DURATION_MS = 1000; // Pause duration in milliseconds (1 second)
     vector<Bridge> bridges;
     int num_bridges;
 
